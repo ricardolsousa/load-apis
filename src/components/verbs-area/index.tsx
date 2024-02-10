@@ -1,4 +1,5 @@
 import React from "react"
+import VerbsButton from "./components/verbs-button";
 
 const VerbsArea = () => {
 
@@ -7,35 +8,47 @@ const VerbsArea = () => {
         <div className="w-5/6 flex justify-between my-3">
           <div className="flex">
             {/* GET */}
-            <div className="mr-1 py-0.5 px-2 rounded font-medium" style={{ backgroundColor: "#ece7ff" }}>
-              <button style={{ color: "#5628ac" }}>GET</button>
-            </div>
+            <VerbsButton 
+                text={'GET'}
+                color={"#5628ac"}
+                backgroundColor={"#ece7ff"}
+            />
 
             {/* POST */}
-            <div className="mr-1 py-0.5 px-2 rounded font-medium" style={{ backgroundColor: "#c1ffe5" }}>
-              <button style={{ color: "#196445" }}>POST</button>
-            </div>
+            <VerbsButton 
+                text={'POST'}
+                color={"#196445"}
+                backgroundColor={"#c1ffe5"}
+            />
 
             {/* PUT */}
-            <div className="mr-1 py-0.5 px-2 rounded font-medium" style={{ backgroundColor: "#d1efff" }}>
-              <button style={{ color: "#2537a8" }}>PUT</button>
-            </div>
+            <VerbsButton 
+                text={'PUT'}
+                color={"#2537a8"}
+                backgroundColor={"#d1efff"}
+            />
 
             {/* PATCH */}
-            <div className="mr-1 py-0.5 px-2 rounded font-medium" style={{ backgroundColor: "#fdf5c7" }}>
-              <button style={{ color: "#a44614" }}>PATCH</button>
-            </div>
+            <VerbsButton 
+                text={'PATCH'}
+                color={"#a44614"}
+                backgroundColor={"#fdf5c7"}
+            />
 
             {/* DELETE */}
-            <div className="mr-1 py-0.5 px-2 rounded font-medium" style={{ backgroundColor: "#ffe0e0" }}>
-              <button style={{ color: "#851d29" }}>DELETE</button>
-            </div>
+            <VerbsButton 
+                text={'DELETE'}
+                color={"#851d29"}
+                backgroundColor={"#ffe0e0"}
+            />
           </div>
           <div>
             {/* Limpar */}
-            <div className="mr-1 py-0.5 px-2 rounded font-medium" style={{ backgroundColor: "#191f27" }}>
-              <button style={{ color: "#51575e" }}>Limpar</button>
-            </div>
+            <VerbsButton 
+                text={'Limpar'}
+                color={"#51575e"}
+                backgroundColor={"#191f27"}
+            />
           </div>
         </div>
       </div>
