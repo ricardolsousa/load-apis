@@ -9,6 +9,7 @@ function App() {
 
   const [data, setData] = useState<any>(null);
   const [headers, setHeaders] = useState<any>(null);
+  const [configs, setConfigs] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center flex-col">
@@ -18,7 +19,7 @@ function App() {
       </div>
 
       {/* VERBS */}
-      <VerbsArea setData={setData} setHeaders={setHeaders} />      
+      <VerbsArea setData={setData} setHeaders={setHeaders} setConfigs={setConfigs} />      
 
       {/* DATA */}
       <div className="flex justify-center w-full h-96">
@@ -29,7 +30,7 @@ function App() {
           </div>
           
           {/* DATA API */}
-          <div style={{ color: '#ffffff', flexGrow: 1, overflow: 'auto'}}>
+          <div style={{ flexGrow: 1, overflow: 'auto'}}>
             <JSONPretty id="json-pretty-data" style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={data} theme={JSONPrettyMon}></JSONPretty>
           </div>
         </div>
@@ -38,27 +39,28 @@ function App() {
       <div className="flex justify-center mt-5 w-full">
         <div className="w-5/6 flex grid gap-8 grid-cols-2">
           {/* HEADERS */}
-          <div className="min-h-80 rounded-md" style={{ backgroundColor: "#1a202a", borderColor: "#5f5f5f" }}>
+          <div className="h-96 flex flex-col rounded-md" style={{ backgroundColor: "#1a202a", borderColor: "#5f5f5f" }}>
             {/* HEADERS TITLE*/}
             <div className="w-full border-b" style={{ borderColor: "#5f5f5f" }}>
               <h1 className="text-white m-2">Headers</h1>
             </div>
 
             {/* HEADERS DATA */}
-            <div style={{ color: '#ffffff', flexGrow: 1, overflow: 'auto'}}>
+            <div style={{ flexGrow: 1, overflow: 'auto'}}>
               <JSONPretty id="json-pretty-headers"  style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={headers} theme={JSONPrettyMon}></JSONPretty>
             </div>
           </div>
           
           {/* CONFIG */}
-          <div className="min-h-80 rounded-md" style={{ backgroundColor: "#1a202a", borderColor: "#5f5f5f" }}>
+          <div className="h-96 flex flex-col rounded-md" style={{ backgroundColor: "#1a202a", borderColor: "#5f5f5f" }}>
             {/* CONFIG TITLE*/}
             <div className="w-full border-b" style={{ borderColor: "#5f5f5f" }}>
               <h1 className="text-white m-2">Config</h1>
             </div>
 
             {/* CONFIG DATA */}
-            <div>
+            <div style={{ flexGrow: 1, overflow: 'auto'}}>
+              <JSONPretty id="json-pretty-configs"  style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={configs} theme={JSONPrettyMon}></JSONPretty>
             </div>
           </div>
         </div>
