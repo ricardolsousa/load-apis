@@ -4,11 +4,12 @@ import axios from "axios";
 
 interface VerbsAreaProps {
   setData: (data: any) => void;
+  setHeaders: (headers: any) => void;
 }
 
 const VerbsArea = (props: VerbsAreaProps) => {
 
-  const { setData } = props;
+  const { setData, setHeaders } = props;
 
   return (
     <div className="flex justify-center w-full border-b" style={{ borderColor: "#5f5f5f" }}>
@@ -19,7 +20,10 @@ const VerbsArea = (props: VerbsAreaProps) => {
             text={'GET'}
             color={"#5628ac"}
             backgroundColor={"#ece7ff"}
-            onClick={() => axios.get('https://api.publicapis.org/entries').then((response) => setData(response))}
+            onClick={() => axios.get('https://api.publicapis.org/entries').then((response) => {
+              setData(response?.data)
+              setHeaders(response?.headers)
+            })}
           />
 
           {/* POST */}
