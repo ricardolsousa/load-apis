@@ -1,58 +1,66 @@
 import React from "react"
 import VerbsButton from "./components/verbs-button";
+import axios from "axios";
 
-const VerbsArea = () => {
+interface VerbsAreaProps {
+  setData: (data: any) => void;
+}
 
-    return (
-        <div className="flex justify-center w-full border-b" style={{ borderColor: "#5f5f5f" }}>
-        <div className="w-5/6 flex justify-between my-3">
-          <div className="flex">
-            {/* GET */}
-            <VerbsButton 
-                text={'GET'}
-                color={"#5628ac"}
-                backgroundColor={"#ece7ff"}
-            />
+const VerbsArea = (props: VerbsAreaProps) => {
 
-            {/* POST */}
-            <VerbsButton 
-                text={'POST'}
-                color={"#196445"}
-                backgroundColor={"#c1ffe5"}
-            />
+  const { setData } = props;
 
-            {/* PUT */}
-            <VerbsButton 
-                text={'PUT'}
-                color={"#2537a8"}
-                backgroundColor={"#d1efff"}
-            />
+  return (
+    <div className="flex justify-center w-full border-b" style={{ borderColor: "#5f5f5f" }}>
+      <div className="w-5/6 flex justify-between my-3">
+        <div className="flex">
+          {/* GET */}
+          <VerbsButton
+            text={'GET'}
+            color={"#5628ac"}
+            backgroundColor={"#ece7ff"}
+            onClick={() => axios.get('https://api.publicapis.org/entries').then((response) => setData(response))}
+          />
 
-            {/* PATCH */}
-            <VerbsButton 
-                text={'PATCH'}
-                color={"#a44614"}
-                backgroundColor={"#fdf5c7"}
-            />
+          {/* POST */}
+          <VerbsButton
+            text={'POST'}
+            color={"#196445"}
+            backgroundColor={"#c1ffe5"}
+          />
 
-            {/* DELETE */}
-            <VerbsButton 
-                text={'DELETE'}
-                color={"#851d29"}
-                backgroundColor={"#ffe0e0"}
-            />
-          </div>
-          <div>
-            {/* Limpar */}
-            <VerbsButton 
-                text={'Limpar'}
-                color={"#51575e"}
-                backgroundColor={"#191f27"}
-            />
-          </div>
+          {/* PUT */}
+          <VerbsButton
+            text={'PUT'}
+            color={"#2537a8"}
+            backgroundColor={"#d1efff"}
+          />
+
+          {/* PATCH */}
+          <VerbsButton
+            text={'PATCH'}
+            color={"#a44614"}
+            backgroundColor={"#fdf5c7"}
+          />
+
+          {/* DELETE */}
+          <VerbsButton
+            text={'DELETE'}
+            color={"#851d29"}
+            backgroundColor={"#ffe0e0"}
+          />
+        </div>
+        <div>
+          {/* Limpar */}
+          <VerbsButton
+            text={'Limpar'}
+            color={"#51575e"}
+            backgroundColor={"#191f27"}
+          />
         </div>
       </div>
-    )
+    </div>
+  )
 }
 
 export default VerbsArea;
