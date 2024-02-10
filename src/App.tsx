@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import VerbsArea from './components/verbs-area';
+import JSONPretty from 'react-json-pretty';
+
+var JSONPrettyMon = require('react-json-pretty/dist/monikai');
 
 function App() {
 
@@ -26,7 +29,7 @@ function App() {
           
           {/* DATA API */}
           <div style={{ color: '#ffffff', flexGrow: 1, overflow: 'auto'}}>
-            <pre>{JSON.stringify(data?.data, null, 2)}</pre>
+            <JSONPretty id="json-pretty" mainStyle="background: #1a202a!important" data={data} theme={JSONPrettyMon}></JSONPretty>
           </div>
         </div>
       </div>
