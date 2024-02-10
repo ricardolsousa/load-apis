@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import VerbsArea from './components/verbs-area';
 
 function App() {
+
+  const [data, setData] = useState<any>(null);
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center flex-col">
@@ -12,7 +14,7 @@ function App() {
       </div>
 
       {/* VERBS */}
-      <VerbsArea />      
+      <VerbsArea setData={setData} />      
 
       {/* DATA */}
       <div className="flex justify-center w-full h-96">
@@ -24,6 +26,7 @@ function App() {
           
           {/* DATA API */}
           <div style={{ color: '#ffffff', flexGrow: 1, overflow: 'auto'}}>
+            <pre>{JSON.stringify(data?.data, null, 2)}</pre>
           </div>
         </div>
       </div>
