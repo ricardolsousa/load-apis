@@ -32,7 +32,7 @@ function App() {
           
           {/* DATA API */}
           <div style={{ flexGrow: 1, overflow: 'auto'}}>
-            <JSONPretty id="json-pretty-data" style={{ margin: '8px' }} mainStyle="background: #1a202a!important" errorStyle="background: #1a202a!important" data={apiData.data} theme={JSONPrettyMon}></JSONPretty>
+            <JSONPretty id="json-pretty-data" style={{ margin: '8px' }} mainStyle="background: #1a202a!important; overflow: unset !important" errorStyle="background: #1a202a!important; overflow: unset !important" data={apiData.data} theme={JSONPrettyMon}></JSONPretty>
           </div>
         </div>
       </div>
