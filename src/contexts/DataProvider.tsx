@@ -12,6 +12,7 @@ type ApiData = {
   data: Data;
   headers: Headers;
   configs: Configs;
+  statusCode: number | null;
 };
 
 // Criar o contexto
@@ -24,6 +25,7 @@ const initialApiData: ApiData = {
   data: null,
   headers: null,
   configs: null,
+  statusCode: null
 };
 
 export const ApiDataContext = createContext<ApiDataContextType>({
