@@ -17,13 +17,19 @@ const VerbsArea = () => {
             color={"#5628ac"}
             backgroundColor={"#ece7ff"}
             onClick={() => axios.get('https://api.publicapis.org/entries').then((response) => {
-              updateApiData({ 
-                data: response?.data, 
-                headers: response?.headers, 
-                configs: response?.config 
-              })
-              debugger
-            })}
+                updateApiData({ 
+                  data: response?.data, 
+                  headers: response?.headers, 
+                  configs: response?.config,
+                  statusCode: response?.status 
+                })
+              }).catch((error) => updateApiData({ 
+                data: error?.message,
+                headers: error?.config.headers,
+                configs: error?.config,
+                statusCode: error?.status 
+              }))
+            }
           />
 
           {/* POST */}
