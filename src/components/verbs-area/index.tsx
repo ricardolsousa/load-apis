@@ -1,16 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import VerbsButton from "./components/verbs-button";
 import axios from "axios";
+import { ApiDataContext } from "../../contexts/DataProvider";
 
-interface VerbsAreaProps {
-  setData: (data: any) => void;
-  setHeaders: (headers: any) => void;
-  setConfigs: (headers: any) => void;
-}
+const VerbsArea = () => {
 
-const VerbsArea = (props: VerbsAreaProps) => {
-
-  const { setData, setHeaders, setConfigs } = props;
+  const { updateApiData } = useContext(ApiDataContext);
 
   return (
     <div className="flex justify-center w-full border-b" style={{ borderColor: "#5f5f5f" }}>
@@ -22,9 +17,12 @@ const VerbsArea = (props: VerbsAreaProps) => {
             color={"#5628ac"}
             backgroundColor={"#ece7ff"}
             onClick={() => axios.get('https://api.publicapis.org/entries').then((response) => {
-              setData(response?.data)
-              setHeaders(response?.headers)
-              setConfigs(response?.config)
+              updateApiData({ 
+                data: response?.data, 
+                headers: response?.headers, 
+                configs: response?.config 
+              })
+              debugger
             })}
           />
 
