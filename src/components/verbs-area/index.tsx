@@ -16,7 +16,38 @@ const VerbsArea = () => {
             text={'GET'}
             color={"#5628ac"}
             backgroundColor={"#ece7ff"}
-            onClick={() => axios.get('https://api.publicapis.org/entries').then((response) => {
+            onClick={() => axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
+                updateApiData({ 
+                  data: response?.data, 
+                  headers: response?.headers, 
+                  configs: response?.config,
+                  statusCode: response?.status 
+                })
+              }).catch((error) => {
+                updateApiData({ 
+                  data: error?.message, 
+                  headers: error?.config.headers,
+                  configs: error?.config,
+                  statusCode: error?.response.status 
+                })
+              })
+            }
+          />
+
+          {/* POST */}
+          <VerbsButton
+            text={'POST'}
+            color={"#196445"}
+            backgroundColor={"#c1ffe5"}
+            onClick={() => axios.post('https://jsonplaceholder.typicode.com/posts', {
+              title: 'Teste',
+              body: 'api',
+              userId: 1,
+            }, {
+              headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+              }
+            }).then((response) => {
                 updateApiData({ 
                   data: response?.data, 
                   headers: response?.headers, 
@@ -27,16 +58,9 @@ const VerbsArea = () => {
                 data: error?.message,
                 headers: error?.config.headers,
                 configs: error?.config,
-                statusCode: error?.status 
+                statusCode: error?.response.status 
               }))
             }
-          />
-
-          {/* POST */}
-          <VerbsButton
-            text={'POST'}
-            color={"#196445"}
-            backgroundColor={"#c1ffe5"}
           />
 
           {/* PUT */}
