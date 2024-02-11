@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import './App.css';
 import VerbsArea from './components/verbs-area';
 import JSONPretty from 'react-json-pretty';
+import { ApiDataContext } from './contexts/DataProvider';
 
 var JSONPrettyMon = require('react-json-pretty/dist/monikai');
 
 function App() {
 
-  const [data, setData] = useState<any>(null);
-  const [headers, setHeaders] = useState<any>(null);
-  const [configs, setConfigs] = useState(null);
+  const { apiData } = useContext(ApiDataContext);
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center flex-col">
@@ -19,7 +18,7 @@ function App() {
       </div>
 
       {/* VERBS */}
-      <VerbsArea setData={setData} setHeaders={setHeaders} setConfigs={setConfigs} />      
+      <VerbsArea />      
 
       {/* DATA */}
       <div className="flex justify-center w-full h-96">
@@ -31,7 +30,7 @@ function App() {
           
           {/* DATA API */}
           <div style={{ flexGrow: 1, overflow: 'auto'}}>
-            <JSONPretty id="json-pretty-data" style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={data} theme={JSONPrettyMon}></JSONPretty>
+            <JSONPretty id="json-pretty-data" style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={apiData.data} theme={JSONPrettyMon}></JSONPretty>
           </div>
         </div>
       </div>
@@ -47,7 +46,7 @@ function App() {
 
             {/* HEADERS DATA */}
             <div style={{ flexGrow: 1, overflow: 'auto'}}>
-              <JSONPretty id="json-pretty-headers"  style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={headers} theme={JSONPrettyMon}></JSONPretty>
+              <JSONPretty id="json-pretty-headers"  style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={apiData.headers} theme={JSONPrettyMon}></JSONPretty>
             </div>
           </div>
           
@@ -60,7 +59,7 @@ function App() {
 
             {/* CONFIG DATA */}
             <div style={{ flexGrow: 1, overflow: 'auto'}}>
-              <JSONPretty id="json-pretty-configs"  style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={configs} theme={JSONPrettyMon}></JSONPretty>
+              <JSONPretty id="json-pretty-configs"  style={{ margin: '8px' }} mainStyle="background: #1a202a!important" data={apiData.configs} theme={JSONPrettyMon}></JSONPretty>
             </div>
           </div>
         </div>
